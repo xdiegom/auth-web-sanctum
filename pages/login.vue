@@ -1,19 +1,19 @@
 <script lang="ts" setup>
-// import { useAuthStore } from "~/stores/useAuthStore";
+import { useAuthStore } from '~/stores/useAuthStore';
 
 definePageMeta({
   middleware: ["guest"],
 });
 
 const form = ref({
-  email: "demo@email.com",
+  email: "test@example.com",
   password: "password",
 });
 
-const auth = useAuth();
+const auth = useAuthStore();
 
 async function handleLogin() {
-  if (auth.isLoggedIn.value) {
+  if (auth.isLoggedIn) {
     return navigateTo("/");
   }
 

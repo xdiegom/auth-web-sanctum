@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-// import { useAuthStore } from "~/stores/useAuthStore";
+import { useAuthStore } from "~/stores/useAuthStore";
 
-const auth = useAuth();
+const auth = useAuthStore();
 
 async function handleLogout() {
   await auth.logout();
@@ -10,7 +10,7 @@ async function handleLogout() {
 
 <template>
   <div>
-    <button v-if="auth.isLoggedIn.value" @click="handleLogout">Logout</button>
+    <button v-if="auth.isLoggedIn" @click="handleLogout">Logout</button>
 
     <pre>{{ auth.user }}</pre>
 

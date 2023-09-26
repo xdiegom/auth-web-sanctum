@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-// import {useAuthStore} from "~/stores/useAuthStore";
+import { useAuthStore } from "~/stores/useAuthStore";
 
 const form = ref({
   name: "",
@@ -8,7 +8,7 @@ const form = ref({
   password_confirmation: "",
 });
 
-const auth = useAuth();
+const auth = useAuthStore();
 
 async function handleRegister() {
   const { error } = await auth.register(form.value);

@@ -18,6 +18,16 @@ export function useApiFetch<T>(path: string, options: UseFetchOptions<T> = {}) {
       ...headers,
       ...useRequestHeaders(["cookie"]),
     }
+
+    console.info({
+      credentials: "include",
+      watch: false,
+      ...options,
+      headers: {
+        ...headers,
+        ...options?.headers
+      }
+    })
   }
 
   return useFetch("http://localhost:8000" + path, {
